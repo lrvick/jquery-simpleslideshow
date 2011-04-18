@@ -1,0 +1,23 @@
+ jquery-simpleSlideShow < http://github.com/lrvick/jquery-simpleSlideShow >
+
+WHAT IS JQUERY-SIMPLESLIDESHOW?
+    
+    Because all the otehr jquery slideshows I could find were just too
+    complex to use. 
+    
+    If all you really need is for some images to rotate for a banner or 
+    something similar, this is for you.
+
+
+CURRENT FEATURES:
+
+ * Creates an infinite slideshow loop from a div containing image elements.
+
+ * Contains working demo in demo folder
+
+NOTES
+
+    This uses a frozen snapshot of kral at known working commits, may not work
+    with the latest commits of kral.
+
+	Questions/Comments? Please check us out on IRC via irc://udderweb.com/#uw

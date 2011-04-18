@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+        <script type="text/javascript" src="../simpleSlideShow.js"></script>
+        <style>
+            * {
+                margin:0;
+                padding:0;
+            }
+            .slideshow {
+                width:1000px;
+                height:500px;
+                border:1px black solid;
+                margin:0 auto;
+            }
+        </style>
+    </head>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            simpleSlideShow('.slideshow',5000);
+        });
+    </script>
+    <body>
+        <div class="slideshow">
+            <img src="img/slide1.jpg" alt="" />
+            <img src="img/slide2.jpg" alt="" />
+            <img src="img/slide3.jpg" alt="" />
+            <img src="img/slide4.jpg" alt="" />
+            <img src="img/slide5.jpg" alt="" />
+            <img src="img/slide6.jpg" alt="" />
+            <img src="img/slide7.jpg" alt="" />
+            <img src="img/slide8.jpg" alt="" />
+            <img src="img/slide9.jpg" alt="" />
+        </div>
+    </body>
+</html>
