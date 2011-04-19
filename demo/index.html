@@ -18,10 +18,11 @@
     </head>
     <script type="text/javascript">
         $(document).ready(function() {
-            simpleSlideShow('.slideshow',5000);
+            simpleSlideShow('.slideshow img',5000);
         });
     </script>
     <body>
+    <p><a href='javascript:slideshow_prev()'>Previous</a> <a href='javascript:slideshow_next()'>Next</a></p>
         <div class="slideshow">
             <img src="img/slide1.jpg" alt="" />
             <img src="img/slide2.jpg" alt="" />
@@ -33,5 +34,6 @@
             <img src="img/slide8.jpg" alt="" />
             <img src="img/slide9.jpg" alt="" />
         </div>
+        
     </body>
 </html>
