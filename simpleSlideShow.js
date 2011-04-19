@@ -8,23 +8,27 @@ function simpleSlideShow(target_elements,interval,next_element,prev_element){
 	$(target_elements + ':first').css('left','0');
     
     var slideshow_next = function(){
-	    $active = $(target_elements +':first');
-        $previous = $active;
-        $active = $active.next();
-        $active.animate({ left: '0%' }, 2000 );
-        $previous.animate({ left: '-' + ss_width}, 2000, function(){
-            $previous.css('left', ss_width);
-            $previous.appendTo($target_parent)
-        });
+        if ($(target_elements).not(':animated')){
+	        $active = $(target_elements +':first');
+            $previous = $active;
+            $active = $active.next();
+            $active.animate({ left: '0%' }, 2000 );
+            $previous.animate({ left: '-' + ss_width}, 2000, function(){
+                $previous.css('left', ss_width);
+                $previous.appendTo($target_parent)
+            });
+        };
     };
     
     var slideshow_prev = function(){
-	    $active = $(target_elements + ':last');
-        $next = $(target_elements + ':first');
-        $active.insertBefore($next);
-        $active.css('left', '-'+ss_width);
-        $next.animate({ left: ss_width}, 2000);
-        $active.animate({ left: '0%' }, 2000 );
+        if ($(target_elements).not(':animated')){
+	        $active = $(target_elements + ':last');
+            $next = $(target_elements + ':first');
+            $active.insertBefore($next);
+            $active.css('left', '-'+ss_width);
+            $next.animate({ left: ss_width}, 2000);
+            $active.animate({ left: '0%' }, 2000 );
+        };
     };
     
     if (next_element != undefined){
