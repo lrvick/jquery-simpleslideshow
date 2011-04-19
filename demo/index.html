@@ -8,7 +8,7 @@
                 margin:0;
                 padding:0;
             }
-            .slideshow {
+            #slideshow {
                 width:1000px;
                 height:500px;
                 border:1px black solid;
@@ -18,12 +18,15 @@
     </head>
     <script type="text/javascript">
         $(document).ready(function() {
-            simpleSlideShow('.slideshow img',5000);
+            simpleSlideShow('#slideshow img',5000,'#slideshow_next','#slideshow_prev');
         });
     </script>
     <body>
-    <p><a href='javascript:slideshow_prev()'>Previous</a> <a href='javascript:slideshow_next()'>Next</a></p>
-        <div class="slideshow">
+        <p>
+            <a id='slideshow_prev' href='#'>Previous</a>
+            <a id='slideshow_next' href='#'>Next</a>
+        </p>
+        <div id="slideshow">
             <img src="img/slide1.jpg" alt="" />
             <img src="img/slide2.jpg" alt="" />
             <img src="img/slide3.jpg" alt="" />
@@ -34,6 +37,5 @@
             <img src="img/slide8.jpg" alt="" />
             <img src="img/slide9.jpg" alt="" />
         </div>
-        
     </body>
 </html>
