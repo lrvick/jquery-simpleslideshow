@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+        <script type="text/javascript" src="../simpleSlideShow.js"></script>
+        <style>
+            * {
+                margin:0;
+                padding:0;
+                text-align:center;
+            }
+            .slideshow,
+            .wrapper{
+                width:330px;
+                height:200px;
+                float:left;
+                margin:0 auto;
+                margin:10px;
+            }
+        </style>
+    </head>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            simpleSlideShow('#slideshow1',2000,'#slideshow1_next','#slideshow1_prev');
+            simpleSlideShow('#slideshow2',3000,'#slideshow2_next','#slideshow2_prev');
+            simpleSlideShow('#slideshow3',false,'#slideshow3_next','#slideshow3_prev');
+        });
+    </script>
+    <body>
+        <div class='wrapper'>
+            <div class='slideshow' id="slideshow1">
+                <img src="img/slide1.jpg" alt="" />
+                <img src="img/slide2.jpg" alt="" />
+                <img src="img/slide3.jpg" alt="" />
+                <img src="img/slide4.jpg" alt="" />
+                <img src="img/slide5.jpg" alt="" />
+                <img src="img/slide6.jpg" alt="" />
+                <img src="img/slide7.jpg" alt="" />
+                <img src="img/slide8.jpg" alt="" />
+                <img src="img/slide9.jpg" alt="" />
+            </div>
+            <p>
+                <a id='slideshow1_prev' href='#'>Previous</a>
+                <a id='slideshow1_next' href='#'>Next</a>
+            </p>
+        </div>
+        <div class='wrapper'>
+            <div class='slideshow' id="slideshow2">
+                <img src="img/slide1.jpg" alt="" />
+                <img src="img/slide2.jpg" alt="" />
+                <img src="img/slide3.jpg" alt="" />
+                <img src="img/slide4.jpg" alt="" />
+                <img src="img/slide5.jpg" alt="" />
+                <img src="img/slide6.jpg" alt="" />
+                <img src="img/slide7.jpg" alt="" />
+                <img src="img/slide8.jpg" alt="" />
+                <img src="img/slide9.jpg" alt="" />
+            </div>
+            <p>
+                <a id='slideshow2_prev' href='#'>Previous</a>
+                <a id='slideshow2_next' href='#'>Next</a>
+            </p>
+        </div>
+        <div class='wrapper'>
+            <div class='slideshow' id="slideshow3">
+                <img src="img/slide1.jpg" alt="" />
+                <img src="img/slide2.jpg" alt="" />
+                <img src="img/slide3.jpg" alt="" />
+                <img src="img/slide4.jpg" alt="" />
+                <img src="img/slide5.jpg" alt="" />
+                <img src="img/slide6.jpg" alt="" />
+                <img src="img/slide7.jpg" alt="" />
+                <img src="img/slide8.jpg" alt="" />
+                <img src="img/slide9.jpg" alt="" />
+            </div>
+            <p>
+                <a id='slideshow3_prev' href='#'>Previous</a>
+                <a id='slideshow3_next' href='#'>Next</a>
+            </p>
+        </div>
+    </body>
+</html>

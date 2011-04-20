@@ -1,55 +1,68 @@
-function simpleSlideShow(target_elements,interval,next_element,prev_element){
-    $target_parent = $(target_elements).parent();
-    ss_width = '100%';
-	ss_height = $target_parent.height();
-	$target_parent.css({'position':'absolute','overflow':'hidden'});
-	$(target_elements).css({'position':'absolute','width' : ss_width, 'height' : ss_height+'px', 'left' : ss_width});
-	$(target_elements + ':first').css('left','0');
-    $target_parent.data('locked','False')
-   
-    var slideshow_next = function(){
-        if ($target_parent.data('locked') == 'False'){
-            $target_parent.data('locked','True')
-	        $active = $(target_elements +':first');
-            $previous = $active;
-            $active = $active.next();
-            $active.animate({ left: '0%' }, 2000 );
-            $previous.animate({ left: '-' + ss_width}, 2000, function(){
+function simpleSlideShow(parent_element, interval, next_element, prev_element) {
+    $parent_element = $(parent_element);
+    ss_width = $parent_element.width();
+    ss_height = $parent_element.height();
+    $parent_element.css({
+        'overflow': 'hidden',
+        'position': 'relative'
+    });
+    $parent_element.children().css({
+        'position': 'absolute',
+        'width': ss_width + 'px',
+        'height': ss_height + 'px',
+        'left': ss_width + 'px'
+    });
+    $parent_element.children(':first').css({
+        'left': '0px'
+    });
+    $parent_element.data('locked', 'False');
+
+    var slideshow_next = function() {
+        if ($parent_element.data('locked') == 'False') {
+            $parent_element.data('locked', 'True');
+            $previous = $parent_element.children(':first');
+            $active = $previous.next();
+            $active.animate({
+                left: '0px'
+            }, 2000);
+            $previous.animate({
+                left: '-' + ss_width + 'px'
+            }, 2000, function() {
                 $previous.css('left', ss_width);
-                $previous.appendTo($target_parent)
-                $(next_element).click(slideshow_next);
-                $target_parent.data('locked','False')
+                $previous.appendTo($parent_element);
+                $parent_element.data('locked', 'False');
             });
-        };
+        }
     };
-    
-    var slideshow_prev = function(){
-        if ($target_parent.data('locked') == 'False'){
-            $target_parent.data('locked','True')
-	        $active = $(target_elements + ':last');
-            $next = $(target_elements + ':first');
+
+    var slideshow_prev = function() {
+        if ($parent_element.data('locked') == 'False') {
+            $parent_element.data('locked', 'True');
+            $active = $parent_element.children(':last');
+            $next = $parent_element.children(':first');
             $active.insertBefore($next);
-            $active.css('left', '-'+ss_width);
-            $next.animate({ left: ss_width}, 2000);
-            $active.animate({ left: '0%' }, 2000, function(){
-                $target_parent.data('locked','False')
+            $active.css('left', '-' + ss_width + 'px');
+            $next.animate({
+                left: ss_width
+            }, 2000);
+            $active.animate({
+                left: '0px'
+            }, 2000, function() {
+                $parent_element.data('locked', 'False');
             });
-        };
+        }
     };
 
-    if (next_element != undefined){
+    if (next_element !== undefined) {
         $(next_element).click(slideshow_next);
-    };
-
-    if (prev_element != undefined){
+    }
+    if (prev_element !== undefined) {
         $(prev_element).click(slideshow_prev);
-    };
-
-    if (interval == undefined){
+    }
+    if (interval === undefined) {
         interval = 5000;
-    };
-    if (interval != false){    
+    }
+    if (interval !== false) {
         setInterval(slideshow_next, interval);
     }
-};
-
+}
