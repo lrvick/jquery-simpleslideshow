@@ -7,10 +7,10 @@ function simpleSlideShow(element, interval, next_element, prev_element) {
             var $previous = $el.children(':first');
             var $active = $previous.next();
             $active.animate({
-                left: '0px'
+                left: '0%'
             }, 2000);
             $previous.animate({
-                left: '-' + ss_width + 'px'
+                left: '-' + ss_width
             }, 2000, function() {
                 $previous.css('left', ss_width);
                 $previous.appendTo($el);
@@ -26,12 +26,12 @@ function simpleSlideShow(element, interval, next_element, prev_element) {
             var $active = $el.children(':last');
             var $next = $el.children(':first');
             $active.insertBefore($next);
-            $active.css('left', '-' + ss_width + 'px');
+            $active.css('left', '-' + ss_width);
             $next.animate({
                 left: ss_width
             }, 2000);
             $active.animate({
-                left: '0px'
+                left: '0%'
             }, 2000, function() {
                 $el.data('locked', 'False');
             });
@@ -39,7 +39,7 @@ function simpleSlideShow(element, interval, next_element, prev_element) {
     };
 
     var $el = $(element)
-    var ss_width = $el.width();
+    var ss_width = '100%';
     var ss_height = $el.height();
     $el.css({
         'overflow': 'hidden',
@@ -47,12 +47,12 @@ function simpleSlideShow(element, interval, next_element, prev_element) {
     });
     $el.children().css({
         'position': 'absolute',
-        'width': ss_width + 'px',
-        'height': ss_height + 'px',
-        'left': ss_width + 'px'
+        'width': ss_width,
+        'height': ss_height+'px',
+        'left': ss_width
     });
     $el.children(':first').css({
-        'left': '0px'
+        'left': '0%'
     });
     $el.data('locked', 'False');
 
