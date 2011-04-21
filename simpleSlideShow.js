@@ -1,11 +1,11 @@
 function simpleSlideShow(element, interval, next_element, prev_element) {
 
     var slideshow_next = function(el) {
-        $el = $(el);
+        var $el = $(el);
         if ($el.data('locked') == 'False') {
             $el.data('locked', 'True');
-            $previous = $el.children(':first');
-            $active = $previous.next();
+            var $previous = $el.children(':first');
+            var $active = $previous.next();
             $active.animate({
                 left: '0px'
             }, 2000);
@@ -20,11 +20,11 @@ function simpleSlideShow(element, interval, next_element, prev_element) {
     };
     
     var slideshow_prev = function(el){
-        $el = $(el);
+        var $el = $(el);
         if ($el.data('locked') == 'False') {
             $el.data('locked', 'True');
-            $active = $el.children(':last');
-            $next = $el.children(':first');
+            var $active = $el.children(':last');
+            var $next = $el.children(':first');
             $active.insertBefore($next);
             $active.css('left', '-' + ss_width + 'px');
             $next.animate({
@@ -38,9 +38,9 @@ function simpleSlideShow(element, interval, next_element, prev_element) {
         }
     };
 
-    $el = $(element)
-    ss_width = $el.width();
-    ss_height = $el.height();
+    var $el = $(element)
+    var ss_width = $el.width();
+    var ss_height = $el.height();
     $el.css({
         'overflow': 'hidden',
         'position': 'relative'
@@ -66,6 +66,6 @@ function simpleSlideShow(element, interval, next_element, prev_element) {
         interval = 5000;
     }
     if (interval !== false) {
-        setInterval(slideshow_next(element), interval);
+        setInterval(function(){slideshow_next(element)}, interval);
     }
 }
