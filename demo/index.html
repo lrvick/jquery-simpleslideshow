@@ -18,12 +18,14 @@
     </head>
     <script type="text/javascript">
         $(document).ready(function() {
-            simpleSlideShow('#slideshow',5000,'#slideshow_next','#slideshow_prev');
+            simpleSlideShow('#slideshow',5000,'#slideshow_next','#slideshow_prev', '#slideshow_pause', '#slideshow_play');
         });
     </script>
     <body>
         <p>
             <a id='slideshow_prev' href='#'>Previous</a>
+            <a id='slideshow_play' href='#'>Play</a>
+            <a id='slideshow_pause' href='#'>Pause</a>
             <a id='slideshow_next' href='#'>Next</a>
         </p>
         <div id="slideshow">

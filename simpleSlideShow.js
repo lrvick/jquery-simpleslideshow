@@ -1,4 +1,4 @@
-function simpleSlideShow(element, interval, next_element, prev_element) {
+function simpleSlideShow(element, interval, next_element, prev_element, pause_element, play_element) {
 
     var slideshow_next = function(el) {
         var $el = $(el);
@@ -37,8 +37,17 @@ function simpleSlideShow(element, interval, next_element, prev_element) {
             });
         }
     };
+    
+    var slideshow_pause = function() {
+    	clearInterval(interval_id);
+    };
+    
+    var slideshow_play = function() {
+    	interval_id = setInterval(function(){slideshow_next(element)}, interval);
+    };
 
-    var $el = $(element)
+	var interval_id;
+    var $el = $(element);
     var ss_width = '100%';
     var ss_height = $el.height();
     $el.css({
@@ -66,6 +75,12 @@ function simpleSlideShow(element, interval, next_element, prev_element) {
         interval = 5000;
     }
     if (interval !== false) {
-        setInterval(function(){slideshow_next(element)}, interval);
+        slideshow_play();
+    }
+    if (pause_element !== undefined) {
+    	$(pause_element).click(function(){slideshow_pause()});
+    }
+    if (play_element !== undefined) {
+    	$(play_element).click(function(){slideshow_play()});
     }
 }

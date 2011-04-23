@@ -21,7 +21,7 @@
     </head>
     <script type="text/javascript">
         $(document).ready(function() {
-            simpleSlideShow('#slideshow1',1000,'#slideshow1_next','#slideshow1_prev');
+            simpleSlideShow('#slideshow1',1000,'#slideshow1_next','#slideshow1_prev', '#slideshow1_pause', '#slideshow1_play');
             simpleSlideShow('#slideshow2',5000,'#slideshow2_next','#slideshow2_prev');
             simpleSlideShow('#slideshow3',false,'#slideshow3_next','#slideshow3_prev');
         });
@@ -42,6 +42,10 @@
             <p>
                 <a id='slideshow1_prev' href='#'>Previous</a>
                 <a id='slideshow1_next' href='#'>Next</a>
+            </p>
+            <p>
+                <a id='slideshow1_play' href='#'>Play</a>
+                <a id='slideshow1_pause' href='#'>Pause</a>
             </p>
         </div>
         <div class='wrapper'>
