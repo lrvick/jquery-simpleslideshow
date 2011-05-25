@@ -1,5 +1,6 @@
 function simpleSlideShow(element, interval, next_element, prev_element, thumbnails) {
-
+    var tActive = 0;
+    var mInt;
     var slideshow_next = function(el) {
         var $el = $(el);
         if ($el.data('locked') == 'False') {
