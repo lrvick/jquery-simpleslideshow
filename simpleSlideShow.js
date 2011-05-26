@@ -7,6 +7,15 @@ function simpleSlideShow(element, interval, next_element, prev_element, thumbnai
             $el.data('locked', 'True');
             var $previous = $el.children(':first');
             var $active = $previous.next();
+            if(thumbnails !== undefined) {
+            if(tActive < $(element).children().size() - 1){
+              tActive++;
+            }
+            else{
+              tActive = 0;
+            }
+            moveThumb();
+            }
             $active.animate({
                 left: '0%'
             }, 2000);
@@ -24,6 +33,15 @@ function simpleSlideShow(element, interval, next_element, prev_element, thumbnai
         var $el = $(el);
         if ($el.data('locked') == 'False') {
             $el.data('locked', 'True');
+            if(thumbnails !== undefined) {
+            if(tActive > 0) {
+              tActive--;
+            }
+            else{
+              tActive = $(element).children().size() - 1;
+            }
+              moveThumb();
+            }
             var $active = $el.children(':last');
             var $next = $el.children(':first');
             $active.insertBefore($next);
@@ -41,13 +59,13 @@ function simpleSlideShow(element, interval, next_element, prev_element, thumbnai
     
     var slideshow_goto = function(el, next) {
       //Stop the auto-animation
-      if(interval !== false){clearInterval(mInt);}
       
       var $el = $(el);
       if ($el.data('locked') == 'False') {
       
         //Get all the elements we need
         $el.data('locked', 'True');
+        moveThumb()
         var $el = $(el);
         var $next = $el.children('.slideitem-'+next);
         var $current = $el.children(':first');
@@ -65,11 +83,10 @@ function simpleSlideShow(element, interval, next_element, prev_element, thumbnai
          
           $next.fadeIn(500, function(){
             $current.show();
+            ;
             $el.data('locked', 'False');
           });
-          
-          //Restart the auto-animation
-          if(interval !== false){mInt = setInterval(function(){slideshow_next(element)}, interval);}
+
         });
         
         //Append all elements before the next element to end   
@@ -90,7 +107,7 @@ function simpleSlideShow(element, interval, next_element, prev_element, thumbnai
         'left': ss_width
     });
     $el.children().each(function(index){
-      $(this).attr('class', 'slideitem-'+index); 
+      $(this).addClass('slideitem-'+index); 
     });
     $el.children(':first').css({
         'left': '0%'
@@ -100,25 +117,14 @@ function simpleSlideShow(element, interval, next_element, prev_element, thumbnai
     if (next_element !== undefined) {
         $(next_element).click(
           function(){
-            if(tActive < $(element).children().size() - 1){
-              tActive++;
-            }
-            else{
-              tActive = 0;
-            }
-            moveThumb();
+            
+            
             slideshow_next(element);
         });
     }
     if (prev_element !== undefined) {
         $(prev_element).click(function(){
-          if(tActive > 0) {
-            tActive--;
-          }
-          else{
-            tActive = $(element).children().size() - 1;
-          }
-          moveThumb();
+          
           slideshow_prev(element);
         });
     }
@@ -129,9 +135,10 @@ function simpleSlideShow(element, interval, next_element, prev_element, thumbnai
       $(thumbnails).children().each(function(index) {
           var thumbNum = index;
           $(this).click(function(){
-              slideshow_goto(element, thumbNum);
               tActive = thumbNum;
-              moveThumb();
+              slideshow_goto(element, thumbNum);
+
+              
           });
       });
     }
