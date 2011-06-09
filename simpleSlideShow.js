@@ -137,17 +137,14 @@ function simpleSlideShow(element, interval, next_element, prev_element, thumbnai
           $(this).click(function(){
               tActive = thumbNum;
               slideshow_goto(element, thumbNum);
-
-              
           });
       });
     }
     
     var moveThumb = function() {
-      $(thumbnails).children().removeClass('selected');
-      $(thumbnails).children().eq(tActive).addClass('selected');
+      $(thumbnails).children().find('a').removeClass('selected');
+      $(thumbnails).children().eq(tActive).find('a').addClass('selected');
       $('#thumb-selected').animate( { left: tActive*79 }, 600 );
-
     }
     
     if (interval !== false) {
