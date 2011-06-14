@@ -1,6 +1,8 @@
-function simpleSlideShow(element, interval, next_element, prev_element, pause_element, play_element) {
+function simpleSlideShow(element, interval, slidetimer, next_element, prev_element, pause_element, play_element) {
+    console.log("Initializing simpleSlideShow")
 
     var slideshow_next = function(el) {
+        console.log("This is a test.")
         var $el = $(el);
         if ($el.data('locked') == 'False') {
             $el.data('locked', 'True');
@@ -8,10 +10,10 @@ function simpleSlideShow(element, interval, next_element, prev_element, pause_el
             var $active = $previous.next();
             $active.animate({
                 left: '0%'
-            }, 2000);
+            }, slidetimer);
             $previous.animate({
                 left: '-' + ss_width
-            }, 2000, function() {
+            }, slidetimer, function() {
                 $previous.css('left', ss_width);
                 $previous.appendTo($el);
                 $el.data('locked', 'False');
@@ -29,10 +31,10 @@ function simpleSlideShow(element, interval, next_element, prev_element, pause_el
             $active.css('left', '-' + ss_width);
             $next.animate({
                 left: ss_width
-            }, 2000);
+            }, slidetimer);
             $active.animate({
                 left: '0%'
-            }, 2000, function() {
+            }, slidetimer, function() {
                 $el.data('locked', 'False');
             });
         }
@@ -82,5 +84,8 @@ function simpleSlideShow(element, interval, next_element, prev_element, pause_el
     }
     if (play_element !== undefined) {
     	$(play_element).click(function(){slideshow_play()});
+    }
+    if (slidetimer === undefined) {
+        slidetimer = 2000;
     }
 }
