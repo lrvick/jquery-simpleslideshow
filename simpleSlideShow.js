@@ -1,6 +1,7 @@
-function simpleSlideShow(element, interval, next_element, prev_element, thumbnails) {
+function simpleSlideShow(element, interval, next_element, prev_element, thumbnails, track) {
     var tActive = 0;
     var mInt;
+    var thumb_width = 243;
     var slideshow_next = function(el) {
         var $el = $(el);
         if ($el.data('locked') == 'False') {
@@ -14,7 +15,7 @@ function simpleSlideShow(element, interval, next_element, prev_element, thumbnai
             else{
               tActive = 0;
             }
-            moveThumb();
+            moveThumb(track+' .bar',  thumb_width);
             }
             $active.animate({
                 left: '0%'
@@ -40,7 +41,7 @@ function simpleSlideShow(element, interval, next_element, prev_element, thumbnai
             else{
               tActive = $(element).children().size() - 1;
             }
-              moveThumb();
+              moveThumb(track+' .bar',  thumb_width);
             }
             var $active = $el.children(':last');
             var $next = $el.children(':first');
@@ -65,7 +66,7 @@ function simpleSlideShow(element, interval, next_element, prev_element, thumbnai
       
         //Get all the elements we need
         $el.data('locked', 'True');
-        moveThumb()
+        moveThumb(track+' .bar',  thumb_width);
         var $el = $(el);
         var $next = $el.children('.slideitem-'+next);
         var $current = $el.children(':first');
@@ -141,10 +142,18 @@ function simpleSlideShow(element, interval, next_element, prev_element, thumbnai
       });
     }
     
-    var moveThumb = function() {
+    var moveThumb = function(bar, width) {
       $(thumbnails).children().find('a').removeClass('selected');
       $(thumbnails).children().eq(tActive).find('a').addClass('selected');
-      $('#thumb-selected').animate( { left: tActive*79 }, 600 );
+      if(tActive >= 3) {
+        console.log('animate');
+        $(thumbnails).children().animate( { left: 0 - ( (tActive - 3) * width ) }, 600);
+        console.log('bar: ' + ( tActive - (tActive - 3) ) );
+        $(bar).animate( { left: ( tActive - (tActive - 3) ) * width }, 600 );
+      }
+      else {
+        $(bar).animate( { left: tActive*width }, 600 );
+      }
     }
     
     if (interval !== false) {
