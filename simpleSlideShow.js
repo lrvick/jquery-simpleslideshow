@@ -150,9 +150,11 @@ function simpleSlideShow(element, interval, next_element, prev_element, thumbnai
         $(thumbnails).children().animate( { left: 0 - ( (tActive - 3) * width ) }, 600);
         console.log('bar: ' + ( tActive - (tActive - 3) ) );
         $(bar).animate( { left: ( tActive - (tActive - 3) ) * width }, 600 );
+        
       }
       else {
         $(bar).animate( { left: tActive*width }, 600 );
+        $(thumbnails).children().animate( { left: 0  }, 600);
       }
     }
     
