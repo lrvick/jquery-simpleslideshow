@@ -146,9 +146,7 @@ function simpleSlideShow(element, interval, next_element, prev_element, thumbnai
       $(thumbnails).children().find('a').removeClass('selected');
       $(thumbnails).children().eq(tActive).find('a').addClass('selected');
       if(tActive >= 3) {
-        console.log('animate');
         $(thumbnails).children().animate( { left: 0 - ( (tActive - 3) * width ) }, 600);
-        console.log('bar: ' + ( tActive - (tActive - 3) ) );
         $(bar).animate( { left: ( tActive - (tActive - 3) ) * width }, 600 );
         
       }
